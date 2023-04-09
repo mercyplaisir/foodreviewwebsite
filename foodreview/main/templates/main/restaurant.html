@@ -1,0 +1,27 @@
+{%extends 'main/base.html'%}
+
+{%block title%}{{restaurant.name}}{% endblock %}
+
+{%block content%}
+
+<div name="restaurant-name" style="text-align: left;right: 10cm;">
+    <h3>
+        {{restaurant.name}} 
+    </h3> 
+</div>
+
+<div name="reviews" style="text-align: left;">
+    <h4> Reviews </h4>
+    <ul>{% for review in reviews%}
+        <li> <p>
+            customer : {{review.customer.name}}  <br>
+            stars : {{review.star}} 🌟	 <br>
+            comment : {{review.comment}}
+            </p>
+            
+        </li>
+        {%endfor%}
+    </ul>
+</div>
+
+{% endblock %}
