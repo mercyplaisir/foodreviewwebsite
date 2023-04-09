@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} Food Review {% endblock %} </title>
+
+    <style> 
+        footer {
+        position: fixed;
+        left: 0;
+        bottom: 10;
+        width: 100%;
+        text-align: center;
+    }
+
+    </style>
+
+</head>
+<body>
+    <div class="header" style="position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: left;
+    "> <h1> FOOD REVIEW</h1>
+    <hr>
+    <div>
+
+    <div name="content" id="extends-content">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+    <footer>
+        <h6>for code4sp &#128151</h6>
+    </footer>
+</body>
+</html>

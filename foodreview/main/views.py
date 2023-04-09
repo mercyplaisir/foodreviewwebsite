@@ -4,13 +4,17 @@ from django.http import HttpResponse
 from .models import Customer,Restaurant,Review
 
 # Create your views here.
+def index(response):
+    return render(response,"main/base.html" ,{})
+
 def homepage(response):
-    return HttpResponse("<h1>WELCOME</h1>")
+    restaurants = Restaurant.objects.all()
+    return render(response,"main/home.html",{'restaurants': restaurants})
 
 def restaurant_page(response,id:int):
     restaurant = Restaurant.objects.get(id=id)
-    review = restaurant.review_set.get(id=id)
-    return HttpResponse(f"<h1>{restaurant.name}</h1>\b{review}")
+    reviews = restaurant.review_set.all()
+    return render(response,"main/restaurant.html",{'reviews': reviews,'restaurant':restaurant})
 
 def customer_page(response,id:int):
     customer = Customer.objects.get(id=id)

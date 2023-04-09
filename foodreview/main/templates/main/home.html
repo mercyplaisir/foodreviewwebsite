@@ -1,0 +1,14 @@
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="restaurant" style="position: left;">
+<h6>Restaurants</h6>
+<ul>
+{%for restaurant in restaurants %}
+
+<li ><a href="restaurant/{{restaurant.id}}">{{restaurant.name}} </a></li>
+{%endfor%}
+</ul>
+</div>
+{% endblock %}
