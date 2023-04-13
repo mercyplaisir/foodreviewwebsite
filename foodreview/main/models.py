@@ -3,11 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Customer(models.Model):
-    """"""
-    name = models.CharField(max_length=200)
-    def __str__(self) -> str:
-        return self.name
 class Restaurant(models.Model):
     """"""
     creator = models.ForeignKey(User,on_delete=models.CASCADE,null=True)

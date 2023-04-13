@@ -18,7 +18,7 @@
     {% for review in reviews%}
     <li>
       <p>
-        customer : {{review.customer.username}} <br />
+        customer : {{review.customer.name}},{{review.customer.surname}} <br />
         stars : {{review.star}} 🌟 <br />
         comment : {{review.comment}}
       </p>

@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    <div  style="position: fixed;
+    <div  style="
     left: 0;
     top: 0;
     width: 100%;
@@ -35,12 +35,13 @@
         </div>
         <div>
             <p style="text-align: right;">
+                <a href="http://localhost:8000/main">home</a> <br>
                 {%if user.is_authenticated%}
                 
-                {{user.username}}/ <a href="http://localhost:8000/user/user/logout">logout</a>
+                {{user.name}}/ <a href="http://localhost:8000/user/user/logout">logout</a>
                 
                 {%else%}
-                <a href="http://localhost:8000/user/user/login">login</a>
+                <a href="http://localhost:8000/user/user/login">login</a>\<a href="http://localhost:8000/user/signup">signup</a>
                 {%endif%}
             </p>
         </div>

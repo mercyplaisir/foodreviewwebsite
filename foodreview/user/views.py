@@ -1,3 +1,5 @@
+import random
+import string
 from django.shortcuts import render
 from .forms import SignupForm
 # Create your views here.
@@ -9,7 +11,12 @@ def signup_page(response):
     if response.method == "POST":
         form = SignupForm(response.POST)
         if form.is_valid():
-            form.save()
+            
+            letters = string.ascii_lowercase
+            user_n =  ''.join(random.choice(letters) for i in range(10))
+            form.cleaned_data['username'] = user_n
+            print(form.data)
+            form
     else:
         form= SignupForm()
     return render(response,"user/signup.html",{'form':form})

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from django.contrib.auth.models import User
 
-from .models import Customer,Restaurant,Review
+from .models import Restaurant,Review
 from .forms import CreateNewReviews
 # Create your views here.
 def index(response):
