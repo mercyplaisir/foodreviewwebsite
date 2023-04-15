@@ -38,10 +38,10 @@
                 <a href="http://localhost:8000/main">home</a> <br>
                 {%if user.is_authenticated%}
                 
-                {{user.name}}/ <a href="http://localhost:8000/user/user/logout">logout</a>
+                <a href='http://localhost:8000/user'>{{user.first_name}}</a>/ <a href="http://localhost:8000/user/logout">logout</a>
                 
                 {%else%}
-                <a href="http://localhost:8000/user/user/login">login</a>\<a href="http://localhost:8000/user/signup">signup</a>
+                <a href="http://localhost:8000/user/login">login</a>\<a href="http://localhost:8000/user/signup">signup</a>
                 {%endif%}
             </p>
         </div>

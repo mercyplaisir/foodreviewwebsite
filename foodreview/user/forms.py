@@ -1,28 +1,16 @@
 from typing import Any
-from django import forms
 from django.contrib.auth import login,authenticate
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-
-import random
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
+from .models import CustomUser
 
 
-
-class SignupForm(UserCreationForm):
+class CustomerSignupForm(UserCreationForm):
     
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['first_name','last_name','email','password1','password2']
 
-# class UserProfileForm(forms.Form):
-#     """a user profil form
-
-#     Args:
-#         forms (django.form): _description_
-#     """
-#     d_o_b = forms.DateTimeField()
-#     phone_number = forms.CharField()
-#     class Meta:
-#         """"""
-#         model= User
-#         fields = ['d_o_b','phone_number'] 
+class CustomerChangeForm(UserChangeForm):
+    class Meta:
+        model = CustomUser
+        fields = ['first_name','last_name','email','d_o_b']
