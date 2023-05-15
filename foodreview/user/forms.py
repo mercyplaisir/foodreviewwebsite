@@ -20,4 +20,4 @@ class CustomerChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ['first_name','last_name','email','d_o_b']
-        
+    
