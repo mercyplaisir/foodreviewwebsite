@@ -6,7 +6,7 @@ sign up {% endblock %} {% block content%}
 
 <form method="POST" class="form-group">
   {% csrf_token %} {{ form|crispy }}
-  <a href="http://localhost:8000/main">
+  <a href="http://localhost:8000">
     <button type="submit" class="btn btn-success">Register</button></a
   >
 </form>

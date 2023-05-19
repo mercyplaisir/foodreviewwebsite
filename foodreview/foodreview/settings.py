@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-377&1o=$3ijo)(62q**isdtw89v--==h%n8+$$(b-dsg@hj)0t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['159.223.18.43']
+ALLOWED_HOSTS = ['159.223.18.43','127.0.0.1','localhost']
 # Static handled differently in production.
 # third party storages or whitenoise requires additional settings
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
 
     'main.apps.MainConfig',
     'user.apps.UserConfig',
+    'restaurant.apps.RestaurantConfig',
+    'review.apps.ReviewConfig'
 ]
 
 MIDDLEWARE = [
@@ -134,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
-LOGIN_REDIRECT_URL = '/main'
-LOGOUT_REDIRECT_URL = '/main'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = "user.CustomUser"

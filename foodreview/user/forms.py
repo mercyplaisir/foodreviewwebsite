@@ -1,17 +1,17 @@
-import datetime
-from typing import Any
-from django.contrib.auth import login,authenticate
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django import forms
+from typing import Any,Protocol
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
-from .models import CustomUser
 
+from .models import CustomUser
+from main.utils import get_group
+from restaurant.groups import Restaurant_owner
+
+class Group(Protocol):
+    ...
 
 class CustomerSignupForm(UserCreationForm):
-    
     class Meta:
         model = CustomUser
-        fields = ['first_name','last_name','email','password1','password2']
+        fields = ['first_name','last_name','email','password1','password2','is_restaurant_owner']
 
 class CustomerChangeForm(UserChangeForm):
     # d_o_b = forms.DateField(
@@ -19,5 +19,15 @@ class CustomerChangeForm(UserChangeForm):
     # )
     class Meta:
         model = CustomUser
-        fields = ['first_name','last_name','email','d_o_b']
+        fields = ['first_name','last_name','email','d_o_b','is_restaurant_owner']
+
+class RestaurantOwnerSignupForm(CustomerSignupForm):
     
+    def save(self,group, commit: bool = ...) -> Any:
+        
+        m = super(RestaurantOwnerSignupForm, self).save(commit=True)
+        if commit:
+            if self.cleaned_data['is_restaurant_owner']:
+                m.groups.add(Group)
+                m.save()
+        return super(RestaurantOwnerSignupForm, self).save(commit)
