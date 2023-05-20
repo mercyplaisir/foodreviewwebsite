@@ -1,12 +1,10 @@
-from typing import Any
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin,Group
+
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from .managers import CustomUserManager
-from main.utils import get_group
-from restaurant.groups import Restaurant_owner
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name  = models.CharField(_("first name"), max_length=50)
@@ -16,7 +14,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    is_restaurant_owner = models.BooleanField(_('restaurant owner'),default=False)
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = "email"
@@ -28,3 +25,5 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email + '|' + self.last_name + ' ' + self.first_name
 
+class Restaurant_owner(CustomUser):
+    pass

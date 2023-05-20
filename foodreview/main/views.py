@@ -11,9 +11,3 @@ def homepage(response):
     restaurants = Restaurant.objects.all()
     
     return render(response,"main/home.html",{'restaurants': restaurants})
-
-
-
-def customer_page(response,id:int):
-    customer = Customer.objects.get(id=id)
-    return

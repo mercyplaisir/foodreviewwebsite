@@ -4,7 +4,6 @@ from .forms import (CustomerSignupForm,
                     CustomerChangeForm,
                     RestaurantOwnerSignupForm,
                     )
-
 # Create your views here.
 
 def login_page(response):
@@ -17,7 +16,7 @@ def signup_page(response):
             form.save(commit=True)            
     else:
         form= CustomerSignupForm()
-        
+
     return render(response,"user/signup.html",{'form':form})
 
 def profile(response):
@@ -28,9 +27,7 @@ def restaurant_owner_signup_page(response):
     if response.method == "POST":
         form = RestaurantOwnerSignupForm(response.POST)
         if form.is_valid():
-            
-            print(form.cleaned_data)
             form.save(commit=True)            
     else:
         form= RestaurantOwnerSignupForm()
-    return render(response,"user/signup.html",{'form':form})
+    return render(response,"user/creator_signup.html",{'form':form})
