@@ -1,8 +1,8 @@
-from typing import Any,Protocol
+from typing import Any
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 
 from .models import CustomUser
-from .models import Restaurant_owner
+from .custom.group import Restaurant_owner_group
 
 class CustomerSignupForm(UserCreationForm):
     class Meta:
@@ -17,7 +17,12 @@ class CustomerChangeForm(UserChangeForm):
         model = CustomUser
         fields = ['first_name','last_name','email','d_o_b']
 
-class RestaurantOwnerSignupForm(UserCreationForm):
-    class Meta:
-        model = Restaurant_owner
-        fields = ['first_name','last_name','email','password1','password2']
+class RestaurantOwnerSignupForm(CustomerSignupForm):
+    def save(self, commit: bool = ...) -> Any:
+        user:CustomUser = super(RestaurantOwnerSignupForm,self).save()
+        gr = Restaurant_owner_group.group()
+        user.groups.add(gr)
+        if commit:
+            user.save()
+        
+        return user

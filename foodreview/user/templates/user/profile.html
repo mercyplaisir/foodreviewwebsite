@@ -1,15 +1,24 @@
 {% extends 'main\base.html'%}
-
-{% block title%} Profile {% endblock %}
-{% load crispy_forms_tags %}
-
-
 {%block content%}
-<div id="profile-form" class="container">
-<form  method="post" class="form-group">
-    {%csrf_token%} 
-    {{form|crispy}}
-    <button type="submit">update</button>
-</form>
+
+
+<div class="card" style="width: 18rem;">
+    
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p>last name : {{user.last_name}}</p>
+    <p>first name : {{user.first_name}}</p>
+    <p>date of birth : {{user.d_o_b}}</p>
+      <a href="/user/user_update" class="btn btn-primary">Edit</a>
+    </div>
 </div>
+{%if is_creator%}<p>
+    <div class="container" id="creator_page_button" >
+        <div name="'creator_page">
+    <a href="/user/creator_page" class="btn btn-primary">Creator page</a>
+</div>
+</div>
+</p>{%endif%}
+                
+
 {%endblock%}

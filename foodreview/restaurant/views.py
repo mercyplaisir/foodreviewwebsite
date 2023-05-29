@@ -1,5 +1,8 @@
 from django.shortcuts import render
+
 from .models import Restaurant
+
+
 from review.models import Review
 from review.forms import CreateNewReviews
 
@@ -23,3 +26,12 @@ def restaurant_page(response,name:str):
                 {'reviews': reviews,
                 'restaurant':restaurant,
                 'form':form})
+
+def restaurant_profile(response):
+    render(response,'restaurant/profile.html')
+
+def restaurant_settings(response):
+    render(response,'restaurant/settings.html')
+
+def resaturant_create(response):
+    render(response,'restaurant/create.html')
