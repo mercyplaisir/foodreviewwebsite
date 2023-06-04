@@ -1,7 +1,6 @@
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from restaurant.models import Restaurant
-from enum import StrEnum,auto
 from django.db import models
 
 from django.db.utils import IntegrityError,ProgrammingError
