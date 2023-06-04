@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     
-    path('<str:name>',views.restaurant_page)
+    path("create/",views.restaurant_create, name="restaurant creation"),
+    path('<str:name>/',views.restaurant_page),
 ]

@@ -3,15 +3,16 @@ from django.contrib.contenttypes.models import ContentType
 from restaurant.models import Restaurant
 from enum import StrEnum,auto
 from django.db import models
-from django.db.utils import IntegrityError
+
+from django.db.utils import IntegrityError,ProgrammingError
 
 from typing import List
 
-class Perm(StrEnum):
-    ADD = auto()
-    DELETE = auto()
-    CHANGE = auto()
-    VIEW = auto()
+class Perm:
+    ADD = 'ADD'
+    DELETE = 'DELETE'
+    CHANGE = 'CHANGE'
+    VIEW = 'VIEW'
 
 class Restaurant_owner_group:
     NAME='restaurant_owner'
@@ -46,6 +47,8 @@ def create_group(name:str,model:models.Model,permission:List[str]):
             _ = _permission(_,ct)
             perm_to_gr(_,gr)
     except IntegrityError:
+        pass
+    except ProgrammingError:
         pass
 
 def _permission(name:str,ct:ContentType):

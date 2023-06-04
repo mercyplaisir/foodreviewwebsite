@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{%load crispy_forms_tags%}
+
+{% block content %}
+<p>creation of restaurant</p>
+<div class='container'>
+<form method="post">
+    {% csrf_token %}
+    <div class='container' id='restaurant-info-container'>
+      <div class='container' id ='restaurant-details'>
+        {{restaurant_form|crispy}}
+      </div>
+      <div class ='container' id='restaurant-address'>
+        {{restaurant_address_form|crispy}}
+      </div>
+    </div>
+      
+    <button value = "Post" type="submit" class="btn btn-success"> Post</button>
+  </form>
+</div>
+{% endblock %}
+  
