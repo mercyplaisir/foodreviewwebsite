@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Model migrations
-****_initial.py
+*_initial.py
